@@ -64,3 +64,4 @@ It provides a centralized platform for **Admin**, **Doctor**, and **Patient** ro
 Swagger UI provides interactive REST API documentation and testing.
 
 🔗 **Swagger URL**
+http://localhost:9029/swagger-ui/index.html
