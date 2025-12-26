@@ -1,7 +1,7 @@
-package com.hospital.management.repository;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-import com.hospital.management.entity.*;
-
-public interface DepartmentRepository extends JpaRepository<Department, Long> {
-}
+//package com.hospital.management.repository;
+//
+//import org.springframework.data.jpa.repository.JpaRepository;
+//import com.hospital.management.entity.*;
+//
+//public interface DepartmentRepository extends JpaRepository<Department, Long> {
+//}
