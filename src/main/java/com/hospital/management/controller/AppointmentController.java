@@ -33,22 +33,22 @@ public class AppointmentController {
 	}
 
 	@GetMapping("/patient/{id}")
-	public List<AppointmentDetails> byPatient(@PathVariable Long id) {
+	public List<AppointmentDetails> byPatient(@PathVariable String id) {
 		return service.byPatient(id);
 	}
 
 	@GetMapping("/doctor/{id}")
-	public List<AppointmentDetails> byDoctor(@PathVariable Long id) {
+	public List<AppointmentDetails> byDoctor(@PathVariable String id) {
 		return service.byDoctor(id);
 	}
 
 	@PutMapping("/status/{id}")
-	public PatientAppointment update(@PathVariable Long id, @RequestBody Map<String, String> req) {
+	public PatientAppointment update(@PathVariable String id, @RequestBody Map<String, String> req) {
 		return service.updateStatus(id, req.get("status"));
 	}
 
 	@GetMapping("/slots")
-	public List<String> bookedSlots(@RequestParam Long doctorId, @RequestParam String date) {
+	public List<String> bookedSlots(@RequestParam String doctorId, @RequestParam String date) {
 
 		return service.bookedSlots(doctorId, date);
 	}

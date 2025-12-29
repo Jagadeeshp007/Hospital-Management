@@ -11,15 +11,27 @@ import lombok.ToString;
 
 import java.time.LocalDate;
 
-@Entity
-@Table(
-    name = "appointments",
-    uniqueConstraints = {
-        @UniqueConstraint(
-            columnNames = {"doctor_id", "appointmentDate", "appointmentTime"}
-        )
-    }
-)
+import org.springframework.data.mongodb.core.index.CompoundIndex;
+import org.springframework.data.mongodb.core.index.CompoundIndexes;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "appointments")
+@CompoundIndexes({
+    @CompoundIndex(
+        name = "doctor_date_time_unique",
+        def = "{'doctorId': 1, 'appointmentDate': 1, 'appointmentTime': 1}",
+        unique = true
+    )
+})
+//@Entity
+//@Table(
+//    name = "appointments",
+//    uniqueConstraints = {
+//        @UniqueConstraint(
+//            columnNames = {"doctor_id", "appointmentDate", "appointmentTime"}
+//        )
+//    }
+//)
 @Getter
 @Setter
 @NoArgsConstructor
@@ -29,8 +41,8 @@ import java.time.LocalDate;
 public class Appointment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String id;
 
     /* ================= PATIENT ================= */
     @ManyToOne(fetch = FetchType.LAZY)

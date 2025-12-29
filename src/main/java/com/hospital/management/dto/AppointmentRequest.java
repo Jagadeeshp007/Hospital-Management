@@ -8,8 +8,8 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AppointmentRequest {
 
-	private Long patientId;
-	private Long doctorId;
+	private String patientId;
+	private String doctorId;
 
 	private String date;
 	private String time;

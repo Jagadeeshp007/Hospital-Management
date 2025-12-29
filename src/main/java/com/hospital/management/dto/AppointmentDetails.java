@@ -12,7 +12,7 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AppointmentDetails {
 
-	private Long id;
+	private String id;
 	private Department department;
 	private String patientName;
 	private String doctorName;

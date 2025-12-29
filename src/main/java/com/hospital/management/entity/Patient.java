@@ -1,5 +1,7 @@
 package com.hospital.management.entity;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +11,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity
-@Table(name = "patients")
+@Document(collection = "patients")
+//@Entity
+//@Table(name = "patients")
 @Getter
 @Setter	
 @NoArgsConstructor
@@ -20,8 +23,8 @@ import lombok.ToString;
 public class Patient {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private String id;
 
 	@Column(nullable = false)
 	private String firstName;

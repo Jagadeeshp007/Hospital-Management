@@ -70,7 +70,7 @@ public class AppointmentService {
 		return appointmentList;
 	}
 
-	public List<AppointmentDetails> byPatient(Long id) {
+	public List<AppointmentDetails> byPatient(String id) {
 		List<Appointment> appointment = repo.findByPatient_Id(id);
 		
 		List<AppointmentDetails> appointmentList = new ArrayList<>();
@@ -91,7 +91,7 @@ public class AppointmentService {
 		return appointmentList;
 	}
 
-	public List<AppointmentDetails> byDoctor(Long id) {
+	public List<AppointmentDetails> byDoctor(String id) {
 		List<Appointment> appointment = repo.findByDoctor_Id(id);
 		
 		List<AppointmentDetails> appointmentList = new ArrayList<>();
@@ -113,10 +113,10 @@ public class AppointmentService {
 		
 	}
 
-	public PatientAppointment updateStatus(Long id, String status) {
+	public PatientAppointment updateStatus(String id, String status) {
 		Appointment appoint = repo.findById(id).orElseThrow(() -> new RuntimeException("Appointment not found"));
 		appoint.setStatus(AppointmentStatus.valueOf(status));
-		Appointment appointment = repo.saveAndFlush(appoint);
+		Appointment appointment = repo.save(appoint);
 		PatientAppointment patientAppointment = PatientAppointment.builder()
 				.id(appointment.getId())
 				.department(appointment.getDoctor().getDepartment())
@@ -128,7 +128,7 @@ public class AppointmentService {
 		return patientAppointment;
 	}
 
-	public List<String> bookedSlots(Long doctorId, String date) {
+	public List<String> bookedSlots(String doctorId, String date) {
 
 		return repo.findByDoctor_IdAndAppointmentDate(doctorId, date).stream().map(Appointment::getAppointmentTime)
 				.toList();
